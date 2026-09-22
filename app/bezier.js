@@ -1,0 +1,1 @@
+export function cubicBezier(x1,y1,x2,y2){return x=>{const curve=(t,a,b)=>3*(1-t)*(1-t)*t*a+3*(1-t)*t*t*b+t*t*t;let lo=0,hi=1,t=x;for(let i=0;i<24;i++){t=(lo+hi)/2;if(curve(t,x1,x2)<x)lo=t;else hi=t}return curve(t,y1,y2)}}

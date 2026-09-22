@@ -1,0 +1,18 @@
+# dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# local environment files
+.env
+.env.*
+!.env.example
+
+# deployment and editor metadata
+.vercel/
+.gh-cli/
+.DS_Store
+Thumbs.db
+*.log

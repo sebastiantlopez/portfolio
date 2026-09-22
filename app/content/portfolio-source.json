@@ -1,0 +1,190 @@
+{
+  "sourceTask": "01a0a608-5df7-79c0-a69f-ca99cc872102",
+  "sourceFile": "C:/Users/Sebastian/Documents/Codex/2026-09-15/help/index.html",
+  "name": "Sebastian Lopez",
+  "education": "Mechanical Engineering, University of California, Berkeley",
+  "about": "Hey! I'm studying Mechanical Engineering at Cal, with an intended minor in Structural Engineering, and I am passionate about applying myself and my knowledge to derive solutions that have real impact. I enjoy working on projects that utilize CAD, FEA, embedded systems, and physical testing.",
+  "interests": [
+    "CAD & prototyping",
+    "Robotics",
+    "Design for manufacture",
+    "Research & development",
+    "Structural design",
+    "Finite element analysis",
+    "Hands-on fabrication",
+    "MATLAB",
+    "Product development",
+    "Strucural evaluation"
+  ],
+  "email": "sebastian.t.lopez@berkeley.edu",
+  "linkedin": "https://www.linkedin.com/in/sebastiantlopez/",
+  "experience": [
+    {
+      "title": "Mechanical Design Engineer — ClearPath Medical",
+      "dates": "2025 — 2026",
+      "location": "Berkeley, CA",
+      "bullets": [
+        "Initiated development of scalable in-house connector platform to reduce supplier reliance and procurement lead times.",
+        "Designed high-voltage connector platform with IEC 60601 and MOOP compliance for medical protection standards.",
+        "Performed conceptual design and detailed analysis addressing high-voltage creepage and clearance safety challenges.",
+        "Researched advanced composite material solutions to improve overall electrical insulation and prevent conductor arcing.",
+        "Evaluated scalability in pin count and optimized for compact low-voltage and transient high-voltage surge applications."
+      ],
+      "image": "assets/experience/company-one.png.png"
+    },
+    {
+      "title": "Civil Engineering Intern — PGH Wong Engineering",
+      "dates": "2025 — 2025",
+      "location": "San Francisco, CA",
+      "bullets": [
+        "Supported civil site-design deliverables through drawings, calculations, and coordination across project disciplines.",
+        "Translated design requirements and field constraints into clear, buildable documentation."
+      ],
+      "image": "assets/experience/company-two.png.png"
+    },
+    {
+      "title": "Explainer — The Exploratorium",
+      "dates": "2023 — 2024",
+      "location": "San Francisco, CA",
+      "bullets": [
+        "Facilitated hands-on science experiences for visitors by adapting technical concepts to different ages and backgrounds.",
+        "Partnered with exhibit teams to maintain engaging, reliable interactive demonstrations."
+      ],
+      "image": "assets/experience/company-three.png.png"
+    },
+    {
+      "title": "Civil Engineering & Design Intern — PGH Wong Engineering",
+      "dates": "2023 — 2023",
+      "location": "San Mateo, CA",
+      "bullets": [
+        "Assisted engineering teams with early-stage site design, drafting, and project coordination.",
+        "Built familiarity with design standards, consultant communication, and the path from concept to construction documents."
+      ],
+      "image": "assets/experience/company-four.png.png"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Dual-ChamberPlant Drainage System",
+      "category": "Manufacturing / Design",
+      "facts": [
+        {
+          "label": "Role",
+          "value": "Mechanical Design"
+        },
+        {
+          "label": "Timeline",
+          "value": "8 weeks"
+        },
+        {
+          "label": "Outcome",
+          "value": "***"
+        }
+      ],
+      "images": [
+        "assets/projects/dual-chamber-plant-drainage-system/proj1.png",
+        "assets/projects/dual-chamber-plant-drainage-system/proj2.png",
+        "assets/projects/dual-chamber-plant-drainage-system/proj3.png",
+        "assets/projects/dual-chamber-plant-drainage-system/proj4.png",
+        "assets/projects/dual-chamber-plant-drainage-system/proj5.png",
+        "assets/projects/dual-chamber-plant-drainage-system/proj6.png"
+      ],
+      "downloads": [
+        {
+          "label": "Download CAD model — Reservoir LidReservoir Lid.step ↧",
+          "href": "assets/projects/dual-chamber-plant-drainage-system/Reservoir%20Lid.step"
+        },
+        {
+          "label": "Download CAD model — ReservoirReservoir.step ↧",
+          "href": "assets/projects/dual-chamber-plant-drainage-system/Reservoir.step"
+        },
+        {
+          "label": "Download CAD model — Planter FunnelPlanter Funnel Model.SLDPRT ↧",
+          "href": "assets/projects/dual-chamber-plant-drainage-system/Planter%20Funnel%20Model.SLDPRT"
+        },
+        {
+          "label": "Open project report (PDF) ↗",
+          "href": "assets/projects/dual-chamber-plant-drainage-system/Tapped%20Indoor%20Planter.pdf"
+        }
+      ]
+    },
+    {
+      "title": "Wind Turbine& Structural Support Tower",
+      "category": "Test Engineering / Hardware",
+      "facts": [
+        {
+          "label": "Role",
+          "value": "Optimization & Testing"
+        },
+        {
+          "label": "Timeline",
+          "value": "10 weeks"
+        },
+        {
+          "label": "Outcome",
+          "value": "***"
+        }
+      ],
+      "images": [
+        "assets/projects/wind-turbine-structural-support-tower/IMG_1207.jpg",
+        "assets/projects/wind-turbine-structural-support-tower/im1.png",
+        "assets/projects/wind-turbine-structural-support-tower/im2.png",
+        "assets/projects/wind-turbine-structural-support-tower/im3.png",
+        "assets/projects/wind-turbine-structural-support-tower/im4.png",
+        "assets/projects/wind-turbine-structural-support-tower/im5.png",
+        "assets/projects/wind-turbine-structural-support-tower/im6.png",
+        "assets/projects/wind-turbine-structural-support-tower/im7.png",
+        "assets/projects/wind-turbine-structural-support-tower/im8.png",
+        "assets/projects/wind-turbine-structural-support-tower/im9.png",
+        "assets/projects/wind-turbine-structural-support-tower/im10.png"
+      ],
+      "downloads": [
+        {
+          "label": "Open project report (PDF) ↗",
+          "href": "assets/projects/wind-turbine-structural-support-tower/Wind%20Turbine%20Final%20Report.pdf"
+        }
+      ]
+    },
+    {
+      "title": "VendingMachine",
+      "category": "Product Design / Human Factors",
+      "facts": [
+        {
+          "label": "Role",
+          "value": "Product Designer"
+        },
+        {
+          "label": "Timeline",
+          "value": "10 weeks"
+        },
+        {
+          "label": "Outcome",
+          "value": "3 prototype iterations"
+        }
+      ],
+      "images": [
+        "assets/projects/vending-machine/hero.jpg",
+        "assets/projects/vending-machine/detail-1.jpg",
+        "assets/projects/vending-machine/detail-2.jpg",
+        "assets/projects/vending-machine/detail-3.jpg",
+        "assets/projects/vending-machine/cad-thumbnail.jpg"
+      ],
+      "downloads": [
+        {
+          "label": "Download CAD modelmodel.step ↧",
+          "href": "assets/projects/vending-machine/model.step"
+        },
+        {
+          "label": "Open project report (PDF) ↗",
+          "href": "assets/projects/vending-machine/report.pdf"
+        }
+      ]
+    }
+  ],
+  "editorialNotes": [
+    "Source project summaries contain editing prompts, not finished project descriptions.",
+    "Some experience bullets were scaffolded in the source task; retain provenance and avoid introducing unsupported claims.",
+    "Do not use template testimonials or design-client statistics as portfolio facts.",
+    "Keep original source project unchanged."
+  ]
+}
