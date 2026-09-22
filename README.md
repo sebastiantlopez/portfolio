@@ -2,7 +2,7 @@
 
 Next.js App Router, Tailwind CSS, GSAP, and a local WebGL shader. The portfolio lives at `/`, with separate `/projects`, `/about`, `/experience`, and `/contact` pages. Project detail pages contain uploaded galleries, reports, and CAD files.
 
-The personal site uses a shared `--accent` token: purple in light mode and dark orange in dark mode. Large content panels use a cursor-reactive Border Glow adaptation; compact pills, buttons, chips, and circular controls use a Glass Surface adaptation with accent highlights. Both are implemented locally from the official React Bits interaction models.
+The personal site uses a neutral grayscale theme. Cards, panels, buttons, chips, and circular controls use the local React Bits BorderGlow implementation with cursor-reactive edge lighting and the configured purple, pink, and blue mesh. The major/school pill remains a plain neutral surface.
 
 Run `pnpm install`, `pnpm build`, then `pnpm start`. For the current local preview use http://localhost:3001. `node dev-server.cjs` provides an in-process development fallback on port 3001.
 
