@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import {useEffect,useRef,useState} from 'react';
+import {createContext,useContext,useEffect,useRef,useState} from 'react';
 import gsap from 'gsap';
 import BorderGlow from './border-glow';
 import Shader from './shader';
@@ -12,19 +12,23 @@ const nav=[['Projects','/projects'],['About','/about'],['Experience','/experienc
 const projectSlugs=['plant-drainage','wind-turbine','vending-machine'];
 const projectTitles=['Dual-Chamber Plant Drainage System','Wind Turbine & Structural Support Tower','Vending Machine'];
 const projects=source.projects.map((project,index)=>({...project,title:projectTitles[index],slug:projectSlugs[index],images:index===2?[]:project.images.map(image=>'/portfolio/'+image),downloads:index===2?[]:project.downloads.map(download=>({...download,href:'/portfolio/'+download.href,label:download.href.endsWith('.pdf')?'Read project report':decodeURIComponent(download.href.split('/').pop())})),facts:project.facts.filter(fact=>fact.label!=='Outcome')}));
-const glowSettings={edgeSensitivity:30,glowColor:'40 80 80',backgroundColor:'#120F17',borderRadius:23,glowRadius:52,glowIntensity:1.2,coneSpread:13,animated:true,colors:['#c084fc','#f472b6','#38bdf8']};
+const glowSettings={edgeSensitivity:30,glowColor:'40 80 80',borderRadius:23,glowRadius:52,glowIntensity:1.2,coneSpread:13,colors:['#c084fc','#f472b6','#38bdf8']};
+const GlowIntroContext=createContext(false);
+const GlowBackgroundContext=createContext('#120F17');
+let glowIntroPlayed=false;
 
-function Glow({children,className=''}){return <BorderGlow {...glowSettings} className={className}>{children}</BorderGlow>}
+function Glow({children,className=''}){const animated=useContext(GlowIntroContext);const backgroundColor=useContext(GlowBackgroundContext);return <BorderGlow {...glowSettings} animated={animated} backgroundColor={backgroundColor} className={className}>{children}</BorderGlow>}
 function GlowButton({href,children,className=''}){return <Glow className={`engineering-button-glow ${className}`}><Link className="engineering-button" href={href}>{children}</Link></Glow>}
 function Cards(){return <div className="engineering-cards">{projects.map(project=><Glow className="engineering-card-glow" key={project.slug}><Link href={'/projects/'+project.slug} className="engineering-card">{project.images[0]?<img src={project.images[0]} alt={project.title}/>:<div className="project-placeholder" aria-hidden="true"><span>03</span></div>}<div className="card-caption"><div><small>{project.category}</small><h3>{project.title}</h3></div><Glow className="round-arrow-glow"><span className="round-arrow">↗</span></Glow></div></Link></Glow>)}</div>}
 
 export default function Personal({page='home',slug}){
-  const root=useRef(null);const[light,setLight]=useState(false);const[menu,setMenu]=useState(false);const[copied,setCopied]=useState(false);
+  const root=useRef(null);const[light,setLight]=useState(false);const[menu,setMenu]=useState(false);const[copied,setCopied]=useState(false);const playGlowIntro=typeof window!=='undefined'&&!glowIntroPlayed;
   useEffect(()=>{try{setLight(localStorage.getItem('engineering-theme')==='light')}catch{}},[]);
+  useEffect(()=>{glowIntroPlayed=true},[]);
   useEffect(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const context=gsap.context(()=>{gsap.from('.engineering-enter',{y:24,opacity:0,duration:.9,stagger:.09,ease:'power3.out'});gsap.to('.engineering-orbit',{rotation:360,duration:90,repeat:-1,ease:'none'})},root);return()=>context.revert()},[page,slug]);
   function theme(){setLight(value=>{try{localStorage.setItem('engineering-theme',value?'dark':'light')}catch{}return !value})}
   const project=projects.find(item=>item.slug===slug);
-  return <div ref={root} className={'engineering-site '+(light?'engineering-light':'')}>
+  return <GlowIntroContext.Provider value={playGlowIntro}><GlowBackgroundContext.Provider value={light?'#f1f0ed':'#120F17'}><div ref={root} className={'engineering-site '+(light?'engineering-light':'')}>
     <a className="engineering-skip" href="#portfolio-content">Skip to content</a>
     <Glow className="engineering-header-glow"><header className="engineering-header"><Link href="/" className="engineering-logo" aria-label="Sebastian Lopez home">sl<span>.</span></Link><nav aria-label="Main navigation">{nav.map(([label,href])=><Link key={href} href={href} aria-current={page===label.toLowerCase()?'page':undefined}>{label}</Link>)}</nav><div className="engineering-controls"><Glow className="engineering-round-glow"><button className="engineering-round" role="switch" aria-checked={!light} aria-label="Dark mode" onClick={theme}>{light?'☾':'☀'}</button></Glow><Glow className="engineering-round-glow engineering-menu-glow"><button className="engineering-menu engineering-round" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}>☰</button></Glow><Glow className="engineering-contact-glow"><Link className="engineering-contact" href="/contact">Let’s connect ↗</Link></Glow></div></header></Glow>
     {menu&&<Glow className="engineering-mobile-glow"><nav className="engineering-mobile" aria-label="Mobile navigation">{nav.map(([label,href])=><Link href={href} key={href}>{label} ↗</Link>)}</nav></Glow>}
@@ -37,11 +41,11 @@ export default function Personal({page='home',slug}){
         <small className="engineering-enter">Sebastian Lopez / {page==='project'?'Selected project':page}</small><h1 className="engineering-enter">{page==='project'?project?.title:({projects:'Engineering in practice.',about:'A little about me.',experience:'Learning through doing.',contact:'Let’s build something.'})[page]}</h1>
         {page==='projects'&&<><p className="engineering-lead engineering-enter">Mechanical design, manufacturing, and physical testing.</p><Cards/></>}
         {page==='about'&&<><Glow className="engineering-panel-glow"><div className="engineering-about engineering-enter"><p className="engineering-lead">{source.about}</p><div className="engineering-education"><small>Education</small><h2>University of California,<br/>Berkeley</h2><p>Mechanical Engineering<br/>Intended minor in Structural Engineering</p></div></div></Glow><h2 className="engineering-subtitle">What I’m interested in.</h2><div className="engineering-chips">{source.interests.map(interest=><Glow className="engineering-chip-glow" key={interest}><span>{interest.replace('Strucural','Structural')}</span></Glow>)}</div></>}
-        {page==='experience'&&<div className="engineering-roles">{source.experience.map((role,index)=><Glow className="engineering-role-glow" key={role.title}><details open={index===0}><summary><span className="role-number">0{index+1}</span><div><h2>{role.title.split(' — ')[0]}</h2><p>{role.title.split(' — ')[1]}</p></div><div className="role-date">{role.dates}<small>{role.location}</small></div><span className="role-plus">+</span></summary><ul>{role.bullets.map(bullet=><li key={bullet}>{bullet}</li>)}</ul></details></Glow>)}</div>}
+        {page==='experience'&&<div className="engineering-roles">{source.experience.map((role,index)=><Glow className="engineering-role-glow" key={role.title}><details><summary><span className="role-number">0{index+1}</span><div><h2>{role.title.split(' — ')[0]}</h2><p>{role.title.split(' — ')[1]}</p></div><div className="role-date">{role.dates}<small>{role.location}</small></div><span className="role-plus">+</span></summary><ul>{role.bullets.map(bullet=><li key={bullet}>{bullet}</li>)}</ul></details></Glow>)}</div>}
         {page==='contact'&&<Glow className="engineering-panel-glow"><div className="engineering-contact-panel engineering-enter"><p className="engineering-lead">Have an engineering opportunity, a project, or an idea to discuss? I’d love to hear from you.</p><small>Email</small><a className="engineering-email" href={'mailto:'+source.email}>{source.email} ↗</a><div className="engineering-actions"><Glow className="engineering-button-glow"><button className="engineering-button" onClick={async()=>{try{await navigator.clipboard.writeText(source.email);setCopied(true)}catch{setCopied(false)}}}>{copied?'Email copied ✓':'Copy email'}</button></Glow><Glow className="engineering-button-glow"><a className="engineering-button" href={source.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></Glow></div><p role="status" className="engineering-copy-status">{copied?'Copied to your clipboard.':''}</p><small>Based in Berkeley, California</small></div></Glow>}
         {page==='project'&&project&&<><div className="engineering-project-facts">{project.facts.map(fact=><Glow className="engineering-fact-glow" key={fact.label}><div><small>{fact.label}</small><p>{fact.value}</p></div></Glow>)}</div>{project.images.length>0?<div className="engineering-gallery">{project.images.map((image,index)=><Glow className={'engineering-gallery-glow '+(index===0?'engineering-gallery-featured':'')} key={image}><a href={image} target="_blank" rel="noreferrer"><img src={image} alt={project.title+' — project image '+(index+1)}/></a></Glow>)}</div>:<p className="engineering-lead">Product design and human factors project.</p>}{project.downloads.length>0&&<Glow className="engineering-panel-glow engineering-downloads-glow"><div className="engineering-downloads"><h2>Explore the details.</h2>{project.downloads.map(download=><a key={download.href} href={download.href} target="_blank" rel="noreferrer">{download.label} ↗</a>)}</div></Glow>}<GlowButton href="/projects">← All projects</GlowButton></>}
       </section>}
     </main>
     <footer className="engineering-footer"><div><small>Get in touch</small><Link href="/contact">Good ideas start<br/>with a conversation. ↗</Link><a href={'mailto:'+source.email}>{source.email}</a></div><div><Link href="/about">Sebastian Lopez</Link><span>Mechanical engineering · UC Berkeley</span><a href={source.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><small>© {new Date().getFullYear()} Sebastian Lopez</small></div></footer>
-  </div>;
+  </div></GlowBackgroundContext.Provider></GlowIntroContext.Provider>;
 }
