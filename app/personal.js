@@ -16,7 +16,7 @@ const projects=source.projects.map((project,index)=>({...project,title:projectTi
 const glowSettings={edgeSensitivity:30,glowColor:'40 80 80',borderRadius:23,glowRadius:52,glowIntensity:1.2,coneSpread:13,colors:['#c084fc','#f472b6','#38bdf8']};
 const lightGlowSettings={glowRadius:24};
 const GlowIntroContext=createContext(false);
-const GlowBackgroundContext=createContext('#120F17');
+const GlowBackgroundContext=createContext('#000000');
 let glowIntroPlayed=false;
 
 function Glow({children,className=''}){const animated=useContext(GlowIntroContext);const backgroundColor=useContext(GlowBackgroundContext);const light=backgroundColor==='#f1f0ed';return <BorderGlow {...glowSettings} {...(light?lightGlowSettings:{})} animated={animated} backgroundColor={backgroundColor} className={className}>{children}</BorderGlow>}
@@ -30,7 +30,7 @@ export default function Personal({page='home',slug}){
   useEffect(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const context=gsap.context(()=>{gsap.from('.engineering-enter',{y:24,opacity:0,duration:.9,stagger:.09,ease:'power3.out'});const orbit=root.current?.querySelector('.engineering-orbit');if(orbit)gsap.to(orbit,{rotation:360,duration:90,repeat:-1,ease:'none'})},root);return()=>context.revert()},[page,slug]);
   function theme(){setLight(value=>{try{localStorage.setItem('engineering-theme',value?'dark':'light')}catch{}return !value})}
   const project=projects.find(item=>item.slug===slug);
-  return <GlowIntroContext.Provider value={playGlowIntro}><GlowBackgroundContext.Provider value={light?'#f1f0ed':'#120F17'}><div ref={root} className={'engineering-site '+(light?'engineering-light':'')}>
+  return <GlowIntroContext.Provider value={playGlowIntro}><GlowBackgroundContext.Provider value={light?'#f1f0ed':'#000000'}><div ref={root} className={'engineering-site '+(light?'engineering-light':'')}>
     <a className="engineering-skip" href="#portfolio-content">Skip to content</a>
     <Glow className="engineering-header-glow"><header className="engineering-header"><Link href="/" className="engineering-logo" aria-label="Sebastian Lopez home">sl<span>.</span></Link><nav aria-label="Main navigation">{nav.map(([label,href])=><Link key={href} href={href} aria-current={page===label.toLowerCase()?'page':undefined}>{label}</Link>)}</nav><div className="engineering-controls"><Glow className="engineering-round-glow"><button className="engineering-round" role="switch" aria-checked={!light} aria-label="Dark mode" onClick={theme}>{light?'☾':'☀'}</button></Glow><button className="engineering-menu engineering-round" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}>☰</button></div></header></Glow>
     {menu&&<Glow className="engineering-mobile-glow"><nav className="engineering-mobile" aria-label="Mobile navigation">{nav.map(([label,href])=><Link href={href} key={href}>{label} ↗</Link>)}</nav></Glow>}
