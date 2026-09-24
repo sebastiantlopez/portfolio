@@ -6,7 +6,6 @@ import gsap from 'gsap';
 import BorderGlow from './border-glow';
 import GlassSurface from './glass-surface';
 import Shader from './shader';
-import ShapeBlur from './shape-blur';
 import source from './content/portfolio-source.json';
 import './personal.css';
 
@@ -30,10 +29,11 @@ export default function Personal({page='home',slug}){
   useEffect(()=>{glowIntroPlayed=true},[]);
   useEffect(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const context=gsap.context(()=>{gsap.from('.engineering-enter',{y:24,opacity:0,duration:.9,stagger:.09,ease:'power3.out'});const orbit=root.current?.querySelector('.engineering-orbit');if(orbit)gsap.to(orbit,{rotation:360,duration:90,repeat:-1,ease:'none'})},root);return()=>context.revert()},[page,slug]);
   function theme(){setLight(value=>{try{localStorage.setItem('engineering-theme',value?'dark':'light')}catch{}return !value})}
+  function moveHeaderBlur(event){const rect=event.currentTarget.getBoundingClientRect();event.currentTarget.style.setProperty('--blur-x',`${event.clientX-rect.left}px`);event.currentTarget.style.setProperty('--blur-y',`${event.clientY-rect.top}px`)}
   const project=projects.find(item=>item.slug===slug);
   return <GlowIntroContext.Provider value={playGlowIntro}><GlowBackgroundContext.Provider value={light?'#f1f0ed':'#000000'}><div ref={root} className={'engineering-site '+(light?'engineering-light':'')}>
     <a className="engineering-skip" href="#portfolio-content">Skip to content</a>
-    <div className="engineering-header-shell"><header className="engineering-header"><ShapeBlur className="engineering-header-shape" color={light?'#000000':'#ffffff'}/><Link href="/" className="engineering-logo" aria-label="Sebastian Lopez home">sl<span>.</span></Link><nav aria-label="Main navigation">{nav.map(([label,href])=><Link key={href} href={href} aria-current={page===label.toLowerCase()?'page':undefined}>{label}</Link>)}</nav><div className="engineering-controls"><Glow className="engineering-round-glow"><button className="engineering-round" role="switch" aria-checked={!light} aria-label="Dark mode" onClick={theme}>{light?'☾':'☀'}</button></Glow><button className="engineering-menu engineering-round" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}>☰</button></div></header></div>
+    <div className="engineering-header-shell" onPointerMove={moveHeaderBlur}><header className="engineering-header"><Link href="/" className="engineering-logo" aria-label="Sebastian Lopez home">sl<span>.</span></Link><nav aria-label="Main navigation">{nav.map(([label,href])=><Link key={href} href={href} aria-current={page===label.toLowerCase()?'page':undefined}>{label}</Link>)}</nav><div className="engineering-controls"><Glow className="engineering-round-glow"><button className="engineering-round" role="switch" aria-checked={!light} aria-label="Dark mode" onClick={theme}>{light?'☾':'☀'}</button></Glow><button className="engineering-menu engineering-round" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}>☰</button></div></header></div>
     {menu&&<Glow className="engineering-mobile-glow"><nav className="engineering-mobile" aria-label="Mobile navigation">{nav.map(([label,href])=><Link href={href} key={href}>{label} ↗</Link>)}</nav></Glow>}
     <main id="portfolio-content">
       {page==='home'?<>
