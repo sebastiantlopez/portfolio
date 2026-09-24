@@ -10,7 +10,7 @@ export default function BlobCursor(){
  const blobs=useRef([]);
  useEffect(()=>{
   if(!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const move=e=>blobs.current.forEach((el,i)=>{if(!el)return;el.style.visibility='visible';gsap.to(el,{x:e.clientX,y:e.clientY,duration:i===0?.1:.5,ease:i===0?'power3.out':'power1.out',overwrite:'auto'})});
+  const move=e=>blobs.current.forEach(el=>{if(!el)return;el.style.visibility='visible';gsap.to(el,{x:e.clientX,y:e.clientY,duration:.12,ease:'power3.out',overwrite:'auto'})});
   window.addEventListener('pointermove',move,{passive:true});
   return()=>{window.removeEventListener('pointermove',move);blobs.current.forEach(el=>el&&gsap.killTweensOf(el))};
  },[]);
