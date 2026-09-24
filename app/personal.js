@@ -14,7 +14,7 @@ const projectSlugs=['plant-drainage','wind-turbine','vending-machine'];
 const projectTitles=['Dual-Chamber Plant Drainage System','Wind Turbine & Structural Support Tower','Vending Machine'];
 const projects=source.projects.map((project,index)=>({...project,title:projectTitles[index],slug:projectSlugs[index],images:index===2?[]:project.images.map(image=>'/portfolio/'+image),downloads:index===2?[]:project.downloads.map(download=>({...download,href:'/portfolio/'+download.href,label:download.href.endsWith('.pdf')?'Read project report':decodeURIComponent(download.href.split('/').pop())})),facts:project.facts.filter(fact=>fact.label!=='Outcome')}));
 const glowSettings={edgeSensitivity:30,glowColor:'40 80 80',borderRadius:23,glowRadius:52,glowIntensity:1.2,coneSpread:13,colors:['#c084fc','#f472b6','#38bdf8']};
-const lightGlowSettings={glowRadius:24};
+const lightGlowSettings={glowRadius:0,glowIntensity:0,glowColor:'0 0 50',fillOpacity:0,colors:['#1f1f1f','#7a7a7a','#d4d4d4']};
 const GlowIntroContext=createContext(false);
 const GlowBackgroundContext=createContext('#000000');
 let glowIntroPlayed=false;
