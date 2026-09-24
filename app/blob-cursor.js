@@ -20,8 +20,8 @@ export default function BlobCursor({
   filterStdDeviation=3,
   filterColorMatrixValues='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 35 -10',
   useFilter=true,
-  fastDuration=.1,
-  slowDuration=.27,
+  fastDuration=.14,
+  slowDuration=.23,
   fastEase='power3.out',
   slowEase='power1.out',
   zIndex=100
