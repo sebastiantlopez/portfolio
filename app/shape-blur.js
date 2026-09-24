@@ -39,7 +39,7 @@ else{sdf=fill(sdPoly(st-vec2(0.5,0.45),0.3,3),0.05,influence)*1.4;}
 gl_FragColor=vec4(u_color,sdf);}
 `;
 
-export default function ShapeBlur({className='',color='#ffffff',variation=0,pixelRatio=1,shapeSize=.58,roundness=.18,borderSize=.018,circleSize=.12,circleEdge=.32}){
+export default function ShapeBlur({className='',color='#ffffff',variation=0,pixelRatio=1,shapeSize=.95,roundness=.28,borderSize=.045,circleSize=.34,circleEdge=.46}){
   const mountRef=useRef(null),materialRef=useRef(null);
 
   useEffect(()=>{
