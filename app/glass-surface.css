@@ -3,5 +3,6 @@
 .glass-surface__content{position:relative;z-index:1;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:inherit}
 .glass-surface--svg{backdrop-filter:var(--glass-filter) saturate(var(--glass-saturation,1.2));-webkit-backdrop-filter:blur(12px) saturate(var(--glass-saturation,1.2))}
 .glass-surface--fallback{background:rgba(255,255,255,.08);backdrop-filter:blur(12px) saturate(1.5) brightness(1.08);-webkit-backdrop-filter:blur(12px) saturate(1.5) brightness(1.08)}
-.engineering-light .glass-surface{border-color:rgba(255,255,255,.5);background:transparent;box-shadow:inset 0 1px rgba(255,255,255,.68),inset 0 -1px rgba(255,255,255,.14),0 10px 28px rgba(30,20,45,.025)}
-.engineering-light .glass-surface--svg,.engineering-light .glass-surface--fallback{background:transparent;backdrop-filter:blur(6px) saturate(1.02);-webkit-backdrop-filter:blur(6px) saturate(1.02)}
+.engineering-light .glass-surface{border-color:rgba(255,255,255,.82);background:transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 1px 0 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(0,0,0,.08),0 1px 0 rgba(255,255,255,.55),0 12px 34px rgba(17,17,26,.055)}
+.engineering-light .glass-surface:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.62),transparent 28%,transparent 72%,rgba(255,255,255,.2));opacity:.58}
+.engineering-light .glass-surface--svg,.engineering-light .glass-surface--fallback{background:transparent;backdrop-filter:blur(14px) saturate(1.55) brightness(1.08);-webkit-backdrop-filter:blur(14px) saturate(1.55) brightness(1.08)}
