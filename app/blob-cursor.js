@@ -9,9 +9,9 @@ export default function BlobCursor(){
  const blobs=useRef([]);
  useEffect(()=>{
   if(!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const target={x:0,y:0},last={x:0,y:0,time:0};let frame,started=false,speed=0,angle=0;
-  const move=e=>{const now=performance.now(),dx=e.clientX-last.x,dy=e.clientY-last.y,travel=Math.hypot(dx,dy),elapsed=Math.max(now-last.time,1);target.x=e.clientX;target.y=e.clientY;if(!started){blobs.current.forEach(el=>{if(el)el.style.visibility='visible'});started=true}else if(travel>4){speed=Math.max(speed,travel/elapsed);angle=Math.atan2(dy,dx)}last.x=e.clientX;last.y=e.clientY;last.time=now};
-  const tick=()=>{if(started){const fast=speed>.9,trail=fast?Math.min((speed-.9)*2.4,5):0,cos=Math.cos(angle),sin=Math.sin(angle);blobs.current.forEach((el,i)=>{if(!el)return;const offset=trail*[0,.45,1][i],stretch=fast?Math.min((speed-.9)*.13,.22)*(1-i*.2):0;el.style.transform=`translate3d(${target.x-cos*offset}px,${target.y-sin*offset}px,0) rotate(${angle}rad) scale(${1+stretch},${1-stretch*.45})`});speed*=.8}frame=requestAnimationFrame(tick)};
+  const target={x:0,y:0},anchor={x:0,y:0},last={x:0,y:0,time:0};let frame,started=false,speed=0,angle=0;
+  const move=e=>{const now=performance.now(),dx=e.clientX-last.x,dy=e.clientY-last.y,travel=Math.hypot(dx,dy),elapsed=Math.max(now-last.time,1);target.x=e.clientX;target.y=e.clientY;if(!started){anchor.x=target.x;anchor.y=target.y;blobs.current.forEach(el=>{if(el)el.style.visibility='visible'});started=true}else if(travel>4){speed=Math.max(speed,travel/elapsed);angle=Math.atan2(dy,dx)}last.x=e.clientX;last.y=e.clientY;last.time=now};
+  const tick=()=>{if(started){const fast=speed>.9,follow=fast?.68:.55,trail=fast?Math.min((speed-.9)*1.9,4):0,cos=Math.cos(angle),sin=Math.sin(angle);anchor.x+=(target.x-anchor.x)*follow;anchor.y+=(target.y-anchor.y)*follow;blobs.current.forEach((el,i)=>{if(!el)return;const offset=trail*[0,.4,1][i],stretch=fast?Math.min((speed-.9)*.12,.2)*(1-i*.2):0;el.style.transform=`translate3d(${anchor.x-cos*offset}px,${anchor.y-sin*offset}px,0) rotate(${angle}rad) scale(${1+stretch},${1-stretch*.45})`});speed*=.8}frame=requestAnimationFrame(tick)};
   window.addEventListener('pointermove',move,{passive:true});
   frame=requestAnimationFrame(tick);return()=>{window.removeEventListener('pointermove',move);cancelAnimationFrame(frame)};
  },[]);
