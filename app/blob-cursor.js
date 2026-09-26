@@ -25,6 +25,7 @@ export default function BlobCursor({
   slowDuration=.2,
   fastEase='power3.out',
   slowEase='power1.out',
+  portalTarget=null,
   zIndex=100
 }){
   const [mounted,setMounted]=useState(false);
@@ -38,5 +39,5 @@ export default function BlobCursor({
 
     {useFilter&&<svg className="blob-filter" aria-hidden="true"><filter id={filterId}><feGaussianBlur in="SourceGraphic" result="blur" stdDeviation={filterStdDeviation}/><feColorMatrix in="blur" values={filterColorMatrixValues}/></filter></svg>}
     <div className="blob-main" style={{filter:useFilter?`url(#${filterId})`:undefined}}>{Array.from({length:trailCount}).map((_,i)=><div key={i} ref={el=>{blobsRef.current[i]=el}} className="blob" style={{width:sizes[i],height:sizes[i],marginLeft:-sizes[i]/2,marginTop:-sizes[i]/2,borderRadius:blobType==='circle'?'50%':'0%',backgroundColor:fillColor,opacity:opacities[i],boxShadow:'none'}}><div className="inner-dot" style={{width:innerSizes[i],height:innerSizes[i],top:(sizes[i]-innerSizes[i])/2,left:(sizes[i]-innerSizes[i])/2,backgroundColor:innerColor,borderRadius:blobType==='circle'?'50%':'0%'}}/></div>)}</div>
-  </div>,document.body);
+  </div>,portalTarget||document.body);
 }
