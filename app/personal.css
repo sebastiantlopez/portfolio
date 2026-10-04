@@ -57,3 +57,5 @@
 .engineering-header-glow{--header-pointer-x:50%;--header-pointer-y:50%}
 .engineering-header-glow:before{mask-image:radial-gradient(ellipse 260px 110px at var(--header-pointer-x) var(--header-pointer-y),#000 15%,transparent 100%)}
 .engineering-header-glow>.edge-light{mask-image:radial-gradient(ellipse 260px 110px at calc(var(--header-pointer-x) + var(--glow-padding)) calc(var(--header-pointer-y) + var(--glow-padding)),#000 15%,transparent 100%)}
+
+.about-headshot,.about-class-photo{display:block;width:100%;height:auto;border-radius:inherit}.headshot-glow>.border-glow-inner,.fun-photo-glow>.border-glow-inner{overflow:hidden}
