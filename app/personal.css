@@ -59,3 +59,5 @@
 .engineering-header-glow>.edge-light{mask-image:radial-gradient(ellipse 260px 110px at calc(var(--header-pointer-x) + var(--glow-padding)) calc(var(--header-pointer-y) + var(--glow-padding)),#000 15%,transparent 100%)}
 
 .about-headshot,.about-class-photo{display:block;width:100%;height:auto;border-radius:inherit}.headshot-glow>.border-glow-inner,.fun-photo-glow>.border-glow-inner{overflow:hidden}
+
+.engineering-contact-panel .contact-social-actions{gap:12px}.engineering-contact-panel .contact-social-bubble{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;padding:0;border-radius:50%;font-size:13px;font-weight:600;line-height:1}.contact-social-bubble svg{width:19px;height:19px}.contact-social-bubble:disabled{opacity:.5}

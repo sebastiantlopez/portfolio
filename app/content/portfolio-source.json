@@ -21,7 +21,7 @@
   "experience": [
     {
       "title": "Mechanical Design Engineer — ClearPath Medical",
-      "dates": "2025 — 2026",
+      "dates": "Sep 2025 – Present",
       "location": "Berkeley, CA",
       "bullets": [
         "Initiated development of scalable in-house connector platform to reduce supplier reliance and procurement lead times.",
@@ -34,31 +34,37 @@
     },
     {
       "title": "Civil Engineering Intern — PGH Wong Engineering",
-      "dates": "2025 — 2025",
+      "dates": "Jun 2025 – Oct 2025",
       "location": "San Francisco, CA",
       "bullets": [
-        "Supported civil site-design deliverables through drawings, calculations, and coordination across project disciplines.",
-        "Translated design requirements and field constraints into clear, buildable documentation."
+        "Contributed to rail alignment optimization following scope reduction from Mountain House terminus, analyzing alternative pathways and Z-curve configuration at Vasco intersection to efficiently connect with existing ACE railway station.",
+        "Developed parcel inventory from Alameda county assessor data including ownership details, public/private classifications, and footprint calculations by easement type to support RoW acquisition and preliminary engineering documentation.",
+        "Assisted in developing highway connection layouts for the Livermore–Vasco corridor, mapping Right-of-Way exhibit strategies and defining aerial easement pathing for the freeway breakaway section initiating the Z-curve to the station."
       ],
       "image": "assets/experience/company-two.png.png"
     },
     {
-      "title": "Explainer — The Exploratorium",
-      "dates": "2023 — 2024",
+      "title": "HS Explainer — The Exploratorium",
+      "dates": "May 2023 – Aug 2024",
       "location": "San Francisco, CA",
       "bullets": [
-        "Facilitated hands-on science experiences for visitors by adapting technical concepts to different ages and backgrounds.",
-        "Partnered with exhibit teams to maintain engaging, reliable interactive demonstrations."
+        "Performed 10 unique science demonstrations engaging visitors and museum guests across a range of scientific fields.",
+        "Trained around 30 incoming High School Explainers every semester on museum operations and scientific demonstrations.",
+        "Facilitated over 1000 visitor interactions daily across 600 exhibits/coordinated with a team of 30+ explainers per shift.",
+        "Utilized a museum-wide radio system to assist with general operations, such as reuniting lost visitors with their families.",
+        "Participated in daily career development training (200+ hours), advancing skills in public speaking and leadership."
       ],
       "image": "assets/experience/company-three.png.png"
     },
     {
       "title": "Civil Engineering & Design Intern — PGH Wong Engineering",
-      "dates": "2023 — 2023",
+      "dates": "May 2023 – Jul 2023",
       "location": "San Mateo, CA",
       "bullets": [
-        "Assisted engineering teams with early-stage site design, drafting, and project coordination.",
-        "Built familiarity with design standards, consultant communication, and the path from concept to construction documents."
+        "Partnered with 80+ engineers on $2.6B SFO Terminal 3 expansion/modernization, increasing terminal capacity by 30%.",
+        "Developed phasing/sequencing procedures during construction and minimizing disruptions in active zones by over 50%.",
+        "Executed installments of temporary walkways and refined passenger routing strategies to maintain operational efficiency.",
+        "Honed skills in construction operations, project management, and budget oversight for a large-scale infrastructure project."
       ],
       "image": "assets/experience/company-four.png.png"
     }
@@ -183,8 +189,8 @@
   ],
   "editorialNotes": [
     "Source project summaries contain editing prompts, not finished project descriptions.",
-    "Some experience bullets were scaffolded in the source task; retain provenance and avoid introducing unsupported claims.",
     "Do not use template testimonials or design-client statistics as portfolio facts.",
-    "Keep original source project unchanged."
+    "Keep original source project unchanged.",
+    "Experience bullets, role dates, and HS Explainer title updated from the resume screenshot supplied by the user on October 4, 2026."
   ]
 }
