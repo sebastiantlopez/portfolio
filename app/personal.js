@@ -58,6 +58,6 @@ export default function Personal({page='home',slug}){
       </section>}
     </main>
     <PhotoViewer photo={photo} onClose={()=>setPhoto(null)}/>
-    <footer className="engineering-footer"><div><Link href="/contact">Get in touch↗</Link><a href={'mailto:'+source.email}>{source.email}</a></div><div><Link href="/about">Sebastian Lopez</Link><span>Mechanical engineering · UC Berkeley</span><a href={source.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><small>© {new Date().getFullYear()} Sebastian Lopez</small></div></footer>
+    <footer className="engineering-footer"><div><Link href="/contact">Get in touch ↗</Link><a href={'mailto:'+source.email}>{source.email}</a></div><div><Link href="/about">Sebastian Lopez</Link><span>Mechanical engineering · UC Berkeley</span><a href={source.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><small>© {new Date().getFullYear()} Sebastian Lopez</small></div></footer>
   </div></GlowBackgroundContext.Provider></GlowIntroContext.Provider>;
 }
